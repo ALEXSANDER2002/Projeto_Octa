@@ -18,17 +18,23 @@
 ## ⚙️ Como Rodar o Projeto Localmente
 
 1️⃣ **Clone este repositório:**
-
+  ```bash
 git clone https://github.com/ALEXSANDER2002/Projeto_Octa.git
+```
 2️⃣ Entre na pasta do projeto:
+  ```bash
 cd Projeto_Octa
+```
 
 3️⃣ **Instale as dependências:**
-
+  ```bash
 yarn install
+```
 4️⃣**Inicie o servidor:**
 yarn start
 
 5️⃣ **Acesse no navegador:**
+  ```bash
 http://localhost:3000
-
+```
+ 
