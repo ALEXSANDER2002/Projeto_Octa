@@ -31,7 +31,9 @@ cd Projeto_Octa
 yarn install
 ```
 4️⃣**Inicie o servidor:**
+  ```bash
 yarn start
+```
 
 5️⃣ **Acesse no navegador:**
   ```bash
