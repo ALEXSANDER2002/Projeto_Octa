@@ -1,6 +1,6 @@
 # 🐙 Projeto Octa
 
-**Projeto Octa** é um site desenvolvido em **Node.js + Express** utilizando **EJS** para renderização de páginas. Ele possui um menu responsivo e pode ser rodado tanto localmente quanto hospedado online.
+**Projeto Octa** é um site desenvolvido em **Node.js + Express** utilizando **EJS** para renderização de páginas. Ele possui um menu responsivo e pode ser executado tanto localmente quanto hospedado online.
 
 ---
 
@@ -17,17 +17,18 @@
 
 ## ⚙️ Como Rodar o Projeto Localmente
 
-1️⃣ **Clone este repositório**  
-git clone https://github.com/ALEXSANDER2002/Projeto_Octa.git
+1️⃣ **Clone este repositório:**
 
-2️⃣ **Entre na pasta do projeto
+git clone https://github.com/ALEXSANDER2002/Projeto_Octa.git
+2️⃣ Entre na pasta do projeto:
 cd Projeto_Octa
 
-3️⃣ Instale as dependências
-yarn install
+3️⃣ **Instale as dependências:**
 
-4️⃣ Inicie o servidor
+yarn install
+4️⃣**Inicie o servidor:**
 yarn start
 
-5️⃣ Acesse no navegador
+5️⃣ **Acesse no navegador:**
 http://localhost:3000
+
