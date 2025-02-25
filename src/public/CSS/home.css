@@ -34,6 +34,7 @@
     font-size: 14px;
     line-height: 1.6;
 }
+
 /* RESPONSIVIDADE - MOBILE */
 @media (max-width: 768px) {
     .quem-somos-container {
@@ -56,8 +57,6 @@
         line-height: 1.5;
     }
 }
-
-
 
 /* Seção Benefícios */
 .beneficios {
@@ -158,7 +157,6 @@
         font-size: 20px;
     }
 }
-
 
 /* Seção Diretoria */
 .diretoria {
@@ -279,9 +277,6 @@
     }
 }
 
-
-
-
 /* ======== AJUSTES DO CARROSSEL ======== */
 
 .carousel-container {
@@ -301,9 +296,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(11, 15, 35, 0.3), rgba(11, 15, 35, 0.8));
-    z-index: 2;
-    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none; /* Permite clicar nos elementos abaixo do gradiente */
+    z-index: 1;
 }
 
 /* Ajuste do espaçamento entre o header e o carrossel */
@@ -316,8 +311,8 @@ header {
     width: 100%;
     height: 500px; /* Ajuste para o tamanho correto */
     object-fit: cover;
-    border-radius: 10px; /* Deixa as bordas levemente arredondadas */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombreamento sutil */
+    border-radius: 5px; /* Deixa as bordas levemente arredondadas */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombreamento sutil */
 }
 
 /* Indicadores de página (bolinhas) */
@@ -372,4 +367,21 @@ header {
     .carousel-inner img {
         height: 300px;
     }
+}
+
+/* Adicionando sombreamento ao carrossel */
+.carousel-shadow {
+    position: relative;
+}
+
+.carousel-shadow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none; /* Permite clicar nos elementos abaixo do gradiente */
+    z-index: 1;
 }

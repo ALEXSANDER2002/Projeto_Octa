@@ -1,180 +1,164 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Força a cor de fundo para todo o site */
+/* RESET */
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif !important;
-    background-color: #0b0f23 !important; /* Garante que o Bootstrap não sobrescreva */
-    color: white !important; /* Força o texto a continuar branco */
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif !important;
+  background-color: #0b0f23 !important;
+  color: white !important;
 }
 
-/* Remove estilos do Bootstrap que podem interferir */
-.container, .row {
-    margin: 0 !important;
-    padding: 0 !important;
-    max-width: 100% !important;
-}
-
-/* Define o tamanho da fonte e impede que o Bootstrap modifique */
-h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: inherit !important;
-    font-weight: normal !important;
-    color: inherit !important;
-}
-
-
-
+/* HEADER */
 header {
-    position: relative;
-    background: url('/img/polvoatltica-1.png') no-repeat center top;
-    background-size: cover;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); /* Sombra para o efeito escuro na parte inferior */
+  position: relative;
+  background: url('/img/polvoatltica-1.png') no-repeat center top;
+  background-size: 80%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  background-attachment: fixed;
 }
 
-/* Criando o efeito de gradiente na parte inferior do header */
-header::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80px; /* Ajuste para controlar a intensidade do efeito */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(11, 15, 35, 1) 90%);
-}
-/* Overlay escurecendo o fundo */
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:#0d0d4660;
-    top: 0;
-    left: 0;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
-/* Container do header */
+/* Container do Header */
 .header-container {
-    width: 100%;
-    max-width: 1200px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 /* LOGO */
 .logo {
-    width: 280px;
-    display: block;
-    margin: 0 auto 20px;
+  width: 200px;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 /* MENU DESKTOP */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+.menu-desktop {
+  margin-top: 20px;
 }
 
-/* Links do menu */
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 13px; /* Reduzindo o tamanho da fonte */
-    text-transform: uppercase;
-    font-weight: 500; /* Opcional: reduzir um pouco a espessura da fonte */
-    letter-spacing: 1px; /* Opcional: reduzir o espaçamento */
-    padding: 8px 12px; /* Ajuste o padding para equilibrar o espaço */
-    transition: color 0.3s;
+.menu-desktop ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
 
-
-nav ul li a:hover {
-    color: #00ffcc;
+.menu-desktop ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s, transform 0.3s;
 }
 
-/* BOTÃO MENU HAMBÚRGUER */
+.menu-desktop ul li a i {
+  margin-right: 5px;
+}
+
+.menu-desktop ul li a:hover {
+  color: #0066ff;
+  transform: translateY(-3px);
+}
+
+/* OFFCANVAS (Bootstrap) */
+.offcanvas {
+  /* Deixa o fundo escuro no mobile */
+  background-color: #0b0f23 !important;
+  color: white !important;
+  width: 50%;
+}
+.offcanvas-header {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.offcanvas-title {
+  font-weight: 600;
+}
+.offcanvas-body nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.offcanvas-body nav ul li {
+  margin: 15px 0;
+}
+.offcanvas-body nav ul li a {
+  text-decoration: none;
+  color: white !important;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+.offcanvas-body nav ul li a:hover {
+  color: #00ffcc !important;
+}
+
+/* BOTÃO MENU MOBILE */
 .menu-toggle {
+  display: none;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999; /* Garantir que fique acima de tudo */
+}
+
+/* CARROSSEL (seu exemplo) */
+.carousel-container {
+  /* Ajuste se quiser que fique mais perto do header no desktop também */
+  margin-top: 0;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  /* Esconde menu desktop no mobile */
+  .menu-desktop {
     display: none;
-    font-size: 32px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 10;
+  }
+
+  /* Mostra botão hamburguer no mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Aproxima o carrossel do header no mobile */
+  .carousel-container {
+    margin-top: -20px;
+  }
+
+  /* Faz o offcanvas ocupar metade da tela no mobile */
+  .offcanvas.offcanvas-start {
+    width: 50% !important;
+  }
 }
-@media (max-width: 992px) {
-    header {
-        height: 250px;
-    }
-
-    header::after {
-        height: 100px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        height: 220px;
-    }
-
-    header::after {
-        height: 90px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        height: 200px;
-    }
-
-    header::after {
-        height: 80px;
-    }
-}
-
-/* MENU MOBILE */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Exibe o botão no mobile */
-    }
-
-    nav ul {
-        display: none; /* Esconde o menu no mobile */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.9);
-        width: 200px;
-        border-radius: 8px;
-        text-align: center;
-        padding: 10px 0;
-        transition: all 0.3s ease-in-out;
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    /* QUANDO O MENU ESTÁ ABERTO */
-    nav ul.show {
-        display: flex; /* Exibe o menu quando ativado */
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-}
-
-
-

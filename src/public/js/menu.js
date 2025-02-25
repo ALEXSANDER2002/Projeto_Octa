@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function () {
+    var menuToggle = document.querySelector(".menu-toggle");
+    var navMenu = document.querySelector("nav ul");
+
+    menuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("show");
+    });
+});
+
 window.onload = function () {
     console.log("JavaScript carregado!");
 
@@ -36,3 +45,4 @@ window.onload = function () {
         }
     });
 };
+
