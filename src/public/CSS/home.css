@@ -1,0 +1,375 @@
+/* SEÇÃO QUEM SOMOS */
+.quem-somos {
+    text-align: center;
+    padding: 60px 20px;
+    background: #0b0f23;
+    color: white;
+}
+
+.quem-somos h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.quem-somos-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.quem-somos-logo {
+    width: 250px;
+}
+
+.quem-somos-texto {
+    max-width: 500px;
+    text-align: left;
+}
+
+.quem-somos-texto p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+/* RESPONSIVIDADE - MOBILE */
+@media (max-width: 768px) {
+    .quem-somos-container {
+        flex-direction: column; /* Empilha os elementos no mobile */
+        text-align: center;
+    }
+
+    .quem-somos-logo {
+        width: 180px;
+        margin-bottom: 15px; /* Espaço entre a logo e o texto */
+    }
+
+    .quem-somos-texto {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .quem-somos-texto p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}
+
+
+
+/* Seção Benefícios */
+.beneficios {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0b0f23;
+}
+
+/* Título */
+.titulo-beneficios {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.titulo-beneficios::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #00ffcc;
+    margin: 8px auto 0;
+}
+
+/* Container dos cartões */
+.beneficios-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cartões de Benefícios */
+.beneficio-card {
+    background: #0d1126;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.beneficio-card:hover {
+    border-color: #00ffcc;
+    transform: scale(1.05);
+}
+
+/* Ícones */
+.icon-beneficio {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+/* Títulos dos cartões */
+.beneficio-card h3 {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Texto dos cartões */
+.beneficio-card p {
+    font-size: 14px;
+    color: #c4c4c4;
+    margin-bottom: 15px;
+}
+
+/* Links */
+.beneficio-link {
+    font-size: 14px;
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.beneficio-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .beneficios-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .beneficio-card {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .titulo-beneficios {
+        font-size: 20px;
+    }
+}
+
+
+/* Seção Diretoria */
+.diretoria {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0b0f23;
+}
+
+/* Título */
+.titulo-diretoria {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.titulo-diretoria::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: #00ffcc;
+    margin: 8px auto 0;
+}
+
+/* Container da diretoria */
+.diretoria-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Cartões dos diretores */
+.diretor-card {
+    width: 130px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.diretor-card:hover {
+    transform: scale(1.1);
+}
+
+/* Imagens dos diretores */
+.diretor-card img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid #00ffcc;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Nome dos diretores */
+.diretor-card h3 {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+
+/* Cargo dos diretores */
+.diretor-card p {
+    font-size: 12px;
+    color: #c4c4c4;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .diretoria-container {
+        gap: 20px;
+    }
+
+    .diretor-card {
+        width: 120px;
+    }
+
+    .diretor-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .diretor-card h3 {
+        font-size: 13px;
+    }
+
+    .diretor-card p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .diretoria-container {
+        gap: 15px;
+    }
+
+    .diretor-card {
+        width: 100px;
+    }
+
+    .diretor-card img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .diretor-card h3 {
+        font-size: 12px;
+    }
+
+    .diretor-card p {
+        font-size: 10px;
+    }
+}
+
+
+
+
+/* ======== AJUSTES DO CARROSSEL ======== */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Criando o efeito de sombra no carrossel */
+.carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(11, 15, 35, 0.3), rgba(11, 15, 35, 0.8));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Ajuste do espaçamento entre o header e o carrossel */
+header {
+    margin-bottom: -10px; /* Reduzindo a margem inferior do header */
+}
+
+/* Ajustando a altura e comportamento das imagens */
+.carousel-inner img {
+    width: 100%;
+    height: 500px; /* Ajuste para o tamanho correto */
+    object-fit: cover;
+    border-radius: 10px; /* Deixa as bordas levemente arredondadas */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombreamento sutil */
+}
+
+/* Indicadores de página (bolinhas) */
+.carousel-indicators button {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    background-color: white !important;
+    margin: 5px;
+    opacity: 0.7;
+}
+
+.carousel-indicators .active {
+    background-color: #00ffcc !important;
+    opacity: 1;
+}
+
+/* Botões de navegação */
+.carousel-control-prev, 
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* Ajuste para telas maiores */
+@media (min-width: 1200px) {
+    .carousel-inner img {
+        height: 550px;
+    }
+}
+
+/* Ajuste para telas médias */
+@media (max-width: 992px) {
+    .carousel-inner img {
+        height: 450px;
+    }
+}
+
+/* Ajuste para telas menores (Mobile) */
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-inner img {
+        height: 300px;
+    }
+}

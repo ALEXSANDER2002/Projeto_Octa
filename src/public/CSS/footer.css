@@ -1,0 +1,108 @@
+/* ESTILOS GERAIS DO FOOTER */
+footer {
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+    color: black;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0b0f23;
+    margin-bottom: 8px;
+}
+
+.footer-column p {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* ESTILOS DO RODAPÉ INFERIOR */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 15px auto 0;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #666;
+}
+
+/* ÍCONES SOCIAIS */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: 1px solid #0b0f23;
+    border-radius: 4px;
+}
+
+.social-icons img {
+    width: 14px;
+    height: 14px;
+}
+
+/* 🔹 RESPONSIVIDADE - REDUÇÃO NO MOBILE */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-column {
+        width: 90%;
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+    }
+
+    .footer-column p {
+        font-size: 10px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        font-size: 10px;
+        gap: 8px;
+    }
+
+    .social-icons a {
+        width: 24px;
+        height: 24px;
+    }
+
+    .social-icons img {
+        width: 12px;
+        height: 12px;
+    }
+}
