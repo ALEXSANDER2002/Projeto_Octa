@@ -4,6 +4,7 @@ footer {
     padding: 40px 20px;
     color: #000000;
     box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
 }
 
 .footer-container {

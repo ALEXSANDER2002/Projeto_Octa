@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja</title>
+    <title>Modalidades</title>
+    <link rel="stylesheet" href="/CSS/default.css">
     <link rel="stylesheet" href="/CSS/modalidades.css">
+    <link rel="stylesheet" href="/CSS/whatsapp.css">
     <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/titulo.css">
 </head>
 <body>
 
@@ -16,30 +19,13 @@
 <h1>Modalidades</h1>
 
 <!-- Container para centralizar os cards -->
-<div class="modalidades-container">
-    <div class="card-modalidades">
-        <img src="/img/handebol.svg" alt="Ícone Handebol" class="icon">
-        <div class="info">
-            <h3>Handebol</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.</p>
-            <div class="buttons">
-                <button class="btn-participar">Quero participar!</button>
-                <button class="btn-saiba">Saiba mais</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="card-modalidades">
-        <img src="/img/basquete.svg" alt="Ícone Basquete" class="icon">
-        <div class="info">
-            <h3>Basquetebol</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.</p>
-            <div class="buttons">
-                <button class="btn-participar">Quero participar!</button>
-                <button class="btn-saiba">Saiba mais</button>
-            </div>
-        </div>
-    </div>
+<div class="modalidades-container">
+    <% if (typeof modalidades !== 'undefined' && modalidades.length > 0) { %>
+        <% modalidades.forEach(function(modalidade) { %>
+            <%- include('partials/card-modalidade', modalidade) %>
+        <% }); %>
+    <% } %>
 </div>
 
 <%- include('partials/footer') %>
@@ -48,7 +34,6 @@
 <a href="https://wa.me/5594992760247" target="_blank" class="whatsapp-float">
     <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp" width="50" height="50">
 </a>
-
 
 </body>
 </html>
