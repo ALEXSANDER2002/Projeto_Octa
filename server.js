@@ -15,6 +15,8 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 // Importar as rotas
 const rotas = require('./src/routes/rotas');
 app.use('/', rotas);
+app.use('loja', rotas);
+
 
 // Iniciar o servidor e permitir acesso pelo IP local
 app.listen(PORT, IP_LOCAL, () => {

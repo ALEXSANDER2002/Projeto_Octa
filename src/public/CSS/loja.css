@@ -1,0 +1,84 @@
+        body {
+            background-color: #0b0f30;
+            color: rgba(255, 255, 255, 0);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px auto; /* Adiciona espaçamento acima e mantém centralizado */
+            font-weight: bold;
+        }
+        .container {
+            grid-template-columns: repeat(3, 1fr);
+            color: #a3737300;
+            display: flex; /* Mudando para flexbox para facilitar o alinhamento */
+            flex-wrap: wrap; /* Para os cards se ajustarem em várias linhas se necessário */
+            justify-content: center; /* Centraliza os cards horizontalmente */
+            align-items: center; /* Centraliza os cards verticalmente */
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px 0;
+        }
+        .card-loja {
+            text-align: center;
+            background-color: #111b4800;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 260px;
+            height: 340px;
+        }
+        .card-loja .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background: #948f8f00;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.301);
+            font-size: 14px;
+        }
+        .card-loja h2 {
+            font-size: 10px;
+            margin: 10px 0;
+            color: white;
+
+        }
+        .price {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: red;
+        }
+        .new-price {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .container .btn {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: bolder;
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 75%;
+            margin-top: 10px;
+        }
+
+        .container .btn:hover{
+            transition: 0.5s;
+            transform: scale(1.1);
+        }
