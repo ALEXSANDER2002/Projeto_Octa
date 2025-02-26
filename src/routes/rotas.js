@@ -12,4 +12,8 @@ router.get('/loja', (req, res) => {
     res.render('loja'); // ✅ O Express buscará "loja.ejs" dentro de "src/views/"
 });
 
+router.get('/modalidades', (req, res) => {
+    res.render('modalidades');
+});
+
 module.exports = router;
