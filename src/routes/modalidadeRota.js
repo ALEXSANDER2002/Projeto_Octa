@@ -3,22 +3,22 @@ const router = express.Router();
 
 router.get('/modalidades', (req, res) => {
     const modalidades = [
-        { icon: '/img/handebol.svg',
+        { icon: '/img/modalidadeSvg/handebol.svg',
             title: 'Handebol',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' },
-        { icon: '/img/basquete.svg',
+        { icon: '/img/modalidadeSvg/basquete.svg',
             title: 'Basquetebol',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' },
-        { icon: '/img/volei.svg',
+        { icon: '/img/modalidadeSvg/volei.svg',
             title: 'Vôleibol',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' },
-        { icon: '/img/futsal.svg',
+        { icon: '/img/modalidadeSvg/futsal.svg',
             title: 'Futsal',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' },
-        { icon: '/img/ping-pong.svg',
+        { icon: '/img/modalidadeSvg/ping-pong.svg',
             title: 'Ping-Pong',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' },
-        { icon: '/img/xadrez.svg',
+        { icon: '/img/modalidadeSvg/xadrez.svg',
             title: 'Xadrez',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis condimentum libero.' }
     ];
