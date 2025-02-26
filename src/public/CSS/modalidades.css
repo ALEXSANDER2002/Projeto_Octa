@@ -12,7 +12,6 @@
 
     /* Estilização dos cards */
     .card-modalidades {
-
         color: white !important;
         display: flex;
         align-items: center;
@@ -67,6 +66,11 @@
         font-weight: bold;
         cursor: pointer;
         transition: background 0.3s, transform 0.2s;
+        margin-right: 3px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .btn-participar:hover {
+        transform: scale(1.05);
     }
 
     .btn-saiba {
@@ -78,6 +82,7 @@
         background: #0b0f23;
         color: white;
         padding: 10px 15px;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
     }
 
     .btn-saiba:hover {
