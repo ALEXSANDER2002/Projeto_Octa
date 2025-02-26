@@ -25,6 +25,25 @@ header {
   background-attachment: fixed;
 }
 
+/* Overlay */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade conforme necessário */
+  z-index: 1; /* Garante que o overlay fique acima do fundo */
+}
+
+/* Ajuste para que o conteúdo dentro do header fique acima do overlay */
+.header-container {
+  position: relative;
+  z-index: 2;
+}
+
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -44,7 +63,7 @@ header {
 
 /* LOGO */
 .logo {
-  width: 200px;
+  width: 300px;
   transition: transform 0.3s;
 }
 
