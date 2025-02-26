@@ -20,5 +20,5 @@ app.use('/', rotas);
 app.listen(PORT, IP_LOCAL, () => {
     console.log(`Servidor rodando em:`);
     console.log(`➡ No PC: http://localhost:${PORT}`);
-    console.log(`➡ No Celular: http://192.168.1.26:${PORT}`); // Substitua pelo seu IP
+    console.log(`➡ No Celular: http://192.168.0.102:${PORT}`); // Substitua pelo seu IP
 });
