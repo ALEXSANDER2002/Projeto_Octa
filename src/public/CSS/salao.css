@@ -1,0 +1,74 @@
+.trofeus-container {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.trofeu {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.trofeu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.overlay h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+.trofeu.vazio {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 350px;
+}
+
+
+@media (max-width: 768px) {
+    .trofeus-container {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 80%;
+        padding: 10px;
+
+    }
+
+    .trofeu {
+        height: 300px;
+    }
+
+    .overlay {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .overlay h1 {
+        font-size: 1.2rem;
+    }
+}
