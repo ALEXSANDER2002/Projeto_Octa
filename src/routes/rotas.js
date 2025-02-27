@@ -6,7 +6,8 @@ const trofeuRouter = require('./trofeuRota');
 
 // Rota para a Home
 router.get('/', (req, res) => {
-    res.render('home'); // ✅ O Express buscará "home.ejs" dentro de "src/views/"
+    const section = req.query.section || null;
+    res.render('home', { section });
 });
 
 // Rota para a loja
