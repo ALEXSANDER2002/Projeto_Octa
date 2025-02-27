@@ -1,48 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var menuToggle = document.querySelector(".menu-toggle");
-    var navMenu = document.querySelector("nav ul");
-
-    menuToggle.addEventListener("click", function () {
-        navMenu.classList.toggle("show");
-    });
-});
-
-window.onload = function () {
     console.log("JavaScript carregado!");
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
+    const sectionLinks = document.querySelectorAll('.offcanvas-body a, .menu-desktop a');
 
-    if (!menuToggle || !menu) {
-        console.error("Erro: Elementos do menu não encontrados.");
-        return;
-    }
+    sectionLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            const target = this.getAttribute('href');
 
-    console.log("Botão e menu encontrados! Adicionando eventos...");
+            if (target.startsWith('/#')) {
+                event.preventDefault();
 
-    // Função para abrir e fechar o menu
-    function toggleMenu() {
-        menu.classList.toggle("show");
-        console.log("Menu " + (menu.classList.contains("show") ? "aberto!" : "fechado!"));
-    }
+                const sectionId = target.replace('/#', '');
 
-    // Evento de clique no botão do menu
-    menuToggle.addEventListener("click", toggleMenu);
+                if (window.location.pathname !== '/') {
+                    // Redireciona para a página inicial com a âncora completa
+                    window.location.href = `${window.location.origin}/#${sectionId}`;
+                } else {
+                    // Se já estiver na página inicial, rola direto para a seção
+                    scrollToSection(sectionId);
+                }
 
-    // Fechar o menu ao clicar em qualquer item dentro dele
-    document.querySelectorAll("#menu li a").forEach(item => {
-        item.addEventListener("click", function () {
-            menu.classList.remove("show");
-            console.log("Menu fechado após clique em um item!");
+                // Fecha o menu mobile, se estiver aberto
+                const menuOffcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("menuOffcanvas"));
+                if (menuOffcanvas) {
+                    menuOffcanvas.hide();
+                    console.log("Menu mobile fechado!");
+                }
+            }
         });
     });
 
-    // Fechar o menu ao clicar fora dele
-    document.addEventListener("click", function (event) {
-        if (!menu.contains(event.target) && event.target !== menuToggle) {
-            menu.classList.remove("show");
-            console.log("Menu fechado ao clicar fora!");
-        }
-    });
-};
+    // Verifica se há âncora na URL ao carregar a página
+    if (window.location.hash) {
+        const sectionId = window.location.hash.replace('#', '');
+        setTimeout(() => {
+            scrollToSection(sectionId);
+        }, 200); // Pequeno delay para garantir que a página carregue
+    }
 
+    // Função para rolar suavemente até a seção
+    function scrollToSection(sectionId) {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            console.log("Rolou para a seção:", sectionId);
+        } else {
+            console.warn("Seção não encontrada:", sectionId);
+        }
+    }
+});

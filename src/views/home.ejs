@@ -55,7 +55,7 @@
         <!-- <span class="visually-hidden">Próximo</span> -->
     <!-- </button> -->
 </div>
-<section class="quem-somos">
+<section class="quem-somos" id="quem-somos">
     <h2>QUEM SOMOS</h2>
     <div class="quem-somos-container">
         <img src="/img/logoatlticamaior-2.png" alt="Logo Octacore" class="quem-somos-logo">
@@ -72,7 +72,7 @@
 </section>
 
 
-<section class="beneficios">
+<section class="beneficios" id="beneficios">
     <h2 class="titulo-beneficios">BENEFÍCIOS</h2>
     <div class="beneficios-container">
         <div class="beneficio-card">
@@ -98,7 +98,7 @@
     </div>
 </section>
 
-<section class="diretoria">
+<section class="diretoria" id="diretoria">
     <h2 class="titulo-diretoria">DIRETORIA</h2>
     <div class="diretoria-container">
         <div class="diretor-card">
@@ -154,12 +154,6 @@
     </div>
 </section>
 
-
-
-
-
-
-
 <%- include('partials/footer') %>
 <%- include('partials/botao-whatsapp') %>
     
@@ -171,6 +165,29 @@
 
     <!-- Importando o script no final para garantir que o DOM já foi carregado -->
     <script src="/js/menu.js"></script>
+<!--
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const section = params.get("section");
+
+        if (section) {
+            console.log("Seção encontrada na URL:", section);
+            scrollToSection(section);
+        }
+    });
+
+    function scrollToSection(sectionId) {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) {
+            console.log("Rolando para a seção:", sectionId);
+            targetElement.scrollIntoView({ behavior: "smooth" });
+        } else {
+            console.warn("Seção não encontrada:", sectionId);
+        }
+    }
+</script>
+-->
 
 </body>
 </html>

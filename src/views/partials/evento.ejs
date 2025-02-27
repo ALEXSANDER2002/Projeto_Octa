@@ -1,0 +1,11 @@
+<div class="evento">
+    <% if (imagem.endsWith('.mp4')) { %>
+        <video controls class="evento-video">
+            <source src="<%= imagem %>" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    <% } else { %>
+        <img src="<%= imagem %>" alt="evento <%= titulo %>">
+    <% } %>
+    <div class="overlay"><h1><%= titulo %></h1></div>
+</div>

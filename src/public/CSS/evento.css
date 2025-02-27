@@ -1,0 +1,148 @@
+.evento-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 30px 50px; /* Espaçamento entre os vídeos */
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente */
+    max-width: 900px; /* Limita a largura */
+    margin: 0 auto; /* Centraliza na página */
+    padding: 20px 0; /* Espaçamento superior e inferior */
+}
+
+/* Ajuste de vídeo */
+.evento-container video {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Terceiro vídeo ocupa toda a largura e fica centralizado */
+.evento-container video:nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+    margin-top: 30px;
+}
+
+/* Container de cada evento */
+.evento-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 20px auto; /* Centraliza os cards */
+    gap: 50px;
+
+}
+
+/* Ajuste do vídeo dentro do card */
+.evento-card video {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+/* Estilização do título */
+.evento-titulo {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    
+    padding: 8px 15px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 280px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Linha verde neon no título */
+.evento-titulo::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background: #00ff00;
+    border-radius: 2px;
+}
+
+/* Responsividade para tablets */
+@media screen and (max-width: 768px) {
+    .evento-container {
+        grid-template-columns: 1fr; /* Uma única coluna */
+        max-width: 80%;
+        justify-content: center;
+    }
+
+    .evento-container video {
+        max-width: 280px; /* Ajuste menor para melhor encaixe */
+    }
+
+    .evento-container video:nth-child(3) {
+        grid-column: span 1; /* Ocupa apenas uma coluna */
+    }
+
+    .evento-titulo {
+        font-size: 16px;
+        padding: 8px 12px;
+        width: 85%;
+        min-height: 35px;
+    }
+
+    .evento-titulo::after {
+        width: 50%;
+        height: 3px;
+    }
+}
+
+/* Responsividade para celulares */
+@media screen and (max-width: 480px) {
+    .evento-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza os vídeos */
+    }
+
+    .evento-container video {
+        max-width: 100%; /* Ocupa a largura total do container */
+    }
+
+    .evento-titulo {
+        font-size: 14px;
+        padding: 6px 10px;
+        width: 90%;
+        min-height: 30px;
+    }
+
+    .evento-titulo::after {
+        width: 40%;
+        height: 2.5px;
+    }
+}
+
+/* Responsividade para telas muito pequenas */
+@media screen and (max-width: 320px) {
+    .evento-container video {
+        max-width: 100%; /* Ajuste total para pequenas telas */
+    }
+
+    .evento-titulo {
+        font-size: 12px;
+        width: 95%;
+        min-height: 25px;
+    }
+
+    .evento-titulo::after {
+        width: 30%;
+        height: 2px;
+    }
+}
