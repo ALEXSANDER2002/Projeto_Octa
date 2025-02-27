@@ -9,7 +9,7 @@ const IP_LOCAL = "0.0.0.0"; // Permite conexões externas na mesma rede
 // Configurar o Express para servir arquivos estáticos da pasta "public"
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 
-app.use(favicon(path.join(__dirname, 'src','public','img','icon','logo-polvo.png')));
+app.use(favicon(path.join(__dirname, 'src','public','img','icon','logo.ico')));
 
 // Configurar o Express para usar EJS
 app.set('view engine', 'ejs');
