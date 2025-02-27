@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const favicon = require('serve-favicon');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,9 +9,12 @@ const IP_LOCAL = "0.0.0.0"; // Permite conexões externas na mesma rede
 // Configurar o Express para servir arquivos estáticos da pasta "public"
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 
+app.use(favicon(path.join(__dirname, 'src','public','img','icon','logo-polvo.png')));
+
 // Configurar o Express para usar EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
+
 
 // Importar as rotas
 const rotas = require('./src/routes/rotas');
