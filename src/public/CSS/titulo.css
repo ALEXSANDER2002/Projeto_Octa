@@ -11,9 +11,9 @@ h1 {
 
 h1::after {
     content: '';
-    width: 50px;
-    height: 3px;
-    background-color: #00ff00;
+    width: 70px;
+    height: 5px;
+    background-color: #17cc17;
     position: absolute;
     bottom: -5px;
     left: 50%;
