@@ -81,9 +81,9 @@ footer {
 }
 
 .social-icons a:hover {
-    background-color: #000000;
+    background-color: #0000003a;
     color: #ffffff;
-    transform: scale(1.1);
+    transform: scale(1.5);
 }
 
 .social-icons img {
