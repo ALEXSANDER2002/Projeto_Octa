@@ -2,32 +2,43 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("JavaScript carregado!");
 
     const sectionLinks = document.querySelectorAll('.offcanvas-body a, .menu-desktop a');
+    const menuOffcanvas = document.getElementById("menuOffcanvas");
+    let pendingSectionId = null; // Armazena a seção que precisa ser rolada
 
     sectionLinks.forEach(link => {
         link.addEventListener('click', function (event) {
             const target = this.getAttribute('href');
 
-            if (target.startsWith('/#')) {
+            if (target.startsWith('/#') || target.startsWith('#')) {
                 event.preventDefault();
 
-                const sectionId = target.replace('/#', '');
+                const sectionId = target.replace('/#', '').replace('#', '');
 
                 if (window.location.pathname !== '/') {
                     // Redireciona para a página inicial com a âncora completa
                     window.location.href = `${window.location.origin}/#${sectionId}`;
                 } else {
-                    // Se já estiver na página inicial, rola direto para a seção
-                    scrollToSection(sectionId);
-                }
+                    pendingSectionId = sectionId;
 
-                // Fecha o menu mobile, se estiver aberto
-                const menuOffcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("menuOffcanvas"));
-                if (menuOffcanvas) {
-                    menuOffcanvas.hide();
-                    console.log("Menu mobile fechado!");
+                    // Fecha o menu mobile, se estiver aberto
+                    const offcanvasInstance = bootstrap.Offcanvas.getInstance(menuOffcanvas);
+                    if (offcanvasInstance) {
+                        offcanvasInstance.hide();
+                        console.log("Menu mobile fechado!");
+                    } else {
+                        scrollToSection(sectionId);
+                    }
                 }
             }
         });
+    });
+
+    // Escuta o fechamento do menu e então rola para a seção
+    menuOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
+        if (pendingSectionId) {
+            scrollToSection(pendingSectionId);
+            pendingSectionId = null;
+        }
     });
 
     // Verifica se há âncora na URL ao carregar a página
