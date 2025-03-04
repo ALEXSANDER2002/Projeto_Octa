@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="/CSS/footer.css">
     <link rel="stylesheet" href="/CSS/whatsapp.css">
     <link rel="stylesheet" href="/CSS/faixa.css">
+    <link rel="stylesheet" href="/CSS/diretoria.css">
+    <link rel="stylesheet" href="/CSS/carroussel.css">
+    <link rel="stylesheet" href="/CSS/beneficio.css">
+    <link rel="stylesheet" href="/CSS/quem-somos.css">
+
     <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,143 +26,21 @@
 </div>
 <%- include('partials/faixa') %>
 
- 
-<!-- Carrossel Bootstrap -->
-<div id="carouselExampleIndicators" class="carousel slide carousel-shadow" data-bs-ride="carousel">
-    <!-- Gradiente Overlay -->
-    <div class="carousel-overlay"></div>
+<%- include('partials/carrossel') %>
 
-    <!-- Indicadores -->
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-
-    <!-- Slides -->
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/img/img-27021.png" class="d-block w-100" alt="Imagem 1">
-        </div>
-        <div class="carousel-item">
-            <img src="/img/2.jpg" class="d-block w-100" alt="Imagem 2">
-        </div>1
-        <div class="carousel-item">
-            <img src="/img/3.jpg" class="d-block w-100" alt="Imagem 3">
-        </div>
-        <div class="carousel-item">
-            <img src="/img/4.jpg" class="d-block w-100" alt="Imagem 4">
-        </div>
-    </div>
-
-    <!-- Controles de navegação -->
-    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"> -->
-        <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-        <span class="visually-hidden">Anterior</span>
-    <!-- </button> -->
-    <!-- <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> -->
-        <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-        <!-- <span class="visually-hidden">Próximo</span> -->
-    <!-- </button> -->
-</div>
 <section class="quem-somos" id="quem-somos">
-    <h2>QUEM SOMOS</h2>
-    <div class="quem-somos-container">
-        <img src="/img/logoatlticamaior-2.png" alt="Logo Octacore" class="quem-somos-logo">
-        <div class="quem-somos-texto">
-            <p>
-                Octacore é a atlética do curso de Engenharia da Computação da FEC (Faculdade de Engenharia da Computação).
-            </p>
-            <p>
-                Fundada em 6 de Setembro de 2022 com a intenção de fortalecer o esporte e lazer no âmbito acadêmico, 
-                a atlética Octacore abraça os discentes de Engenharia da Computação e enriquece o corpo universitário.
-            </p>
-        </div>
-    </div>
+    <%- include('partials/quem-somos') %>
+
 </section>
 
 
 <section class="beneficios" id="beneficios">
-    <h2 class="titulo-beneficios">BENEFÍCIOS</h2>
-    <div class="beneficios-container">
-        <div class="beneficio-card">
-            <img src="/img/Vector (8).png" alt="Ícone Diretores" class="icon-beneficio">
-            <h3>Para diretores</h3>
-            <p>Faça parte das decisões da atlética, desenvolva liderança e tenha acesso exclusivo a eventos e 
-               produtos da atletica.</p>
-            <a href="#" class="beneficio-link">Oferta para este grupo &gt;&gt;</a>
-        </div>
+    <%- include('partials/beneficios') %>
 
-        <div class="beneficio-card">
-            <img src="/img/Group (1).png" alt="Ícone Atletas" class="icon-beneficio">
-            <h3>Para atletas</h3>
-            <p>Treinamentos, competições, uniforme oficial e suporte para representar a atlética.</p>
-            <a href="#" class="beneficio-link">Oferta para este grupo &gt;&gt;</a>
-        </div>
-
-        <div class="beneficio-card">
-            <img src="/img/Vector (9).png" alt="Ícone Associados" class="icon-beneficio">
-            <h3>Para associados</h3>
-            <p>Descontos em festas, eventos e produtos oficiais.</p>
-            <a href="#" class="beneficio-link">Oferta para este grupo &gt;&gt;</a>
-        </div>
-    </div>
 </section>
 
 <section class="diretoria" id="diretoria">
-    <h2 class="titulo-diretoria">DIRETORIA</h2>
-    <div class="diretoria-container">
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Bruno Pessoa">
-            <h3>Bruno Pessoa</h3>
-            <p>Presidente</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Antonio">
-            <h3>Antonio</h3>
-            <p>Vice-Presidente</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Lais Rocha">
-            <h3>Lais Rocha</h3>
-            <p>Financeiro</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Tony Ribeiro">
-            <h3>Tony Ribeiro</h3>
-            <p>Esporte</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Julio">
-            <h3>Julio</h3>
-            <p>Esporte</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Guilherme Lima">
-            <h3>Guilherme Lima</h3>
-            <p>Marketing</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Anne Saraiva">
-            <h3>Anne Saraiva</h3>
-            <p>Eventos</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Lucas Braga">
-            <h3>Lucas Braga</h3>
-            <p>Eventos</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Luiz Vasconcelos">
-            <h3>Luiz Vasconcelos</h3>
-            <p>Produtos</p>
-        </div>
-        <div class="diretor-card">
-            <img src="/img/logoatlticamaior-2.png" alt="Gustavo Cometti">
-            <h3>Gustavo Cometti</h3>
-            <p>E-Sports</p>
-        </div>
-    </div>
+    <%- include('partials/diretoria') %>
 </section>
 
 <%- include('partials/footer') %>
@@ -171,29 +54,6 @@
 
     <!-- Importando o script no final para garantir que o DOM já foi carregado -->
     <script src="/js/menu.js"></script>
-<!--
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const params = new URLSearchParams(window.location.search);
-        const section = params.get("section");
-
-        if (section) {
-            console.log("Seção encontrada na URL:", section);
-            scrollToSection(section);
-        }
-    });
-
-    function scrollToSection(sectionId) {
-        const targetElement = document.getElementById(sectionId);
-        if (targetElement) {
-            console.log("Rolando para a seção:", sectionId);
-            targetElement.scrollIntoView({ behavior: "smooth" });
-        } else {
-            console.warn("Seção não encontrada:", sectionId);
-        }
-    }
-</script>
--->
 
 </body>
 </html>

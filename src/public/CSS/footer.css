@@ -105,14 +105,13 @@ footer {
     height: 70px;
     background-color: transparent;
     border-radius: 8px;
-    box-shadow: 4px 2px 6px rgba(63, 63, 63, 0.999);
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .work-icons a:hover {
-    background-color: #0000003a;
+    background-color: #787DB0;
     color: #ffffff;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .work-icons img {
