@@ -1,0 +1,89 @@
+.trofeus-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.trofeu {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.trofeu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.overlay h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+.trofeu:nth-child(n+2){
+    grid-column: span 1;
+}
+.trofeu:first-child {
+    grid-column: span 1;
+    height: 350px;
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+
+/* Quando a tela for maior, ajustar para 2 colunas */
+@media (min-width: 769px) {
+    .trofeus-container {
+        grid-template-columns: repeat(2, 1fr); /* Define duas colunas */
+    }
+
+    .trofeu:first-child {
+        grid-column: span 2;
+        max-width: 250px;
+        height: 350px;
+        margin: 0 auto; /* Centraliza horizontalmente */
+    }
+
+}
+
+@media (max-width: 768px) {
+    .trofeus-container {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 80%;
+        padding: 10px;
+    }
+
+    .trofeu {
+        height: 400px;
+    }
+
+    .overlay {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .overlay h1 {
+        font-size: 1.2rem;
+    }
+}

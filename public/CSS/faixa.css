@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+.marquee-container {
+    width: 100%;
+    background: black;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 5px 0;
+    margin-bottom: 2px; /* Espaço entre as faixas */
+}
+
+.marquee-content {
+    display: flex;
+    gap: 150px; /* Espaçamento entre os textos */
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+    font-size: 12px;
+    color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}

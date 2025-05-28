@@ -1,0 +1,60 @@
+/* SEÇÃO QUEM SOMOS */
+.quem-somos {
+    text-align: center;
+    padding: 60px 20px;
+    background: #0b0f23;
+    color: white;
+}
+
+.quem-somos h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.quem-somos-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.quem-somos-logo {
+    width: 250px;
+}
+
+.quem-somos-texto {
+    max-width: 500px;
+    text-align: left;
+}
+
+.quem-somos-texto p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVIDADE - MOBILE */
+@media (max-width: 768px) {
+    .quem-somos-container {
+        flex-direction: column; /* Empilha os elementos no mobile */
+        text-align: center;
+    }
+
+    .quem-somos-logo {
+        width: 180px;
+        margin-bottom: 15px; /* Espaço entre a logo e o texto */
+    }
+
+    .quem-somos-texto {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .quem-somos-texto p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}
+

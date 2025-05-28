@@ -1,0 +1,128 @@
+
+    /* Container das modalidades */
+    .modalidades-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza os cards */
+        justify-content: center;
+        width: 100%;
+        max-width: 800px; /* Define um limite para os cards */
+        margin: auto;
+    }
+
+    /* Estilização dos cards */
+    .card-modalidades {
+        color: white !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 600px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-radius: 18px;
+        border: 1px solid #787DB0;
+    }
+
+    /* Ícones */
+    .icon {
+        width: 70px;
+        height: 70px;
+        margin-right: 20px;
+    }
+
+    /* Informações do card */
+    .info {
+        text-align: left;
+        flex: 1;
+    }
+
+    .info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .info p {
+        font-size: 0.9rem;
+        color: #ccc;
+    }
+
+    /* Botões */
+    .buttons {
+        margin-top: 10px;
+    }
+
+    .btn-participar {
+        width: 220px;
+        height: 53px;
+        flex-shrink: 0;
+        border-radius: 18px;
+        background: #FFF;
+        color: black;
+        padding: 10px 15px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-right: 3px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .btn-participar:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-saiba {
+        width: 220px;
+        height: 53px;
+        flex-shrink: 0;
+        border-radius: 18px;
+        border: 1px solid #FFF;
+        background: #0b0f23;
+        color: white;
+        padding: 10px 15px;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .btn-saiba:hover {
+        background: white;
+        color: black;
+    }
+
+    @media (max-width: 600px) {
+        .modalidades-container {
+            max-width: 100%;
+            padding: 0 10px; /* Adiciona um respiro nas laterais */
+        }
+
+        .card-modalidades {
+            flex-direction: column; /* Empilha os elementos verticalmente */
+            text-align: center; /* Centraliza o texto */
+            padding: 15px;
+            width: 100%;
+
+        }
+    .info {
+        align-items: center;
+        text-align: center;
+    }
+        .icon {
+            width: 50px; /* Ícones menores */
+            height: 50px;
+            margin: 0 0 10px 0; /* Espaço abaixo do ícone */
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn-participar,
+        .btn-saiba {
+            width: 100%; /* Botões ocupando toda a largura */
+            max-width: 220px;
+            margin: 5px auto; /* Centraliza os botões */
+        }
+    }

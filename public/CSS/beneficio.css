@@ -1,0 +1,99 @@
+/* Seção Benefícios */
+.beneficios {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0b0f23;
+}
+
+/* Título */
+.titulo-beneficios {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.titulo-beneficios::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #00ffcc;
+    margin: 8px auto 0;
+}
+
+/* Container dos cartões */
+.beneficios-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cartões de Benefícios */
+.beneficio-card {
+    background: #0d1126;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.beneficio-card:hover {
+    border-color: #00ffcc;
+    transform: scale(1.05);
+}
+
+/* Ícones */
+.icon-beneficio {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+/* Títulos dos cartões */
+.beneficio-card h3 {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Texto dos cartões */
+.beneficio-card p {
+    font-size: 14px;
+    color: #c4c4c4;
+    margin-bottom: 15px;
+}
+
+/* Links */
+.beneficio-link {
+    font-size: 14px;
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.beneficio-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .beneficios-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .beneficio-card {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .titulo-beneficios {
+        font-size: 20px;
+    }
+}

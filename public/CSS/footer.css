@@ -1,0 +1,185 @@
+/* ESTILOS GERAIS DO FOOTER */
+footer {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    color: #000000;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.footer-column h3:hover {
+    color: #00ffcc;
+}
+
+.footer-column p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    transition: color 0.3s;
+}
+
+.footer-column p:hover {
+    color: #00ffcc;
+}
+
+/* ESTILOS DO RODAPÉ INFERIOR */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 15px auto 0;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #666666;
+    margin: 5px 0;
+}
+
+/* ÍCONES SOCIAIS */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #0000003a;
+    color: #ffffff;
+    transform: scale(1.5);
+}
+
+.social-icons img {
+    width: 14px;
+    height: 14px;
+}
+
+.work-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.work-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.work-icons a:hover {
+    background-color: #787DB0;
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.work-icons img {
+    width: 70px;
+    height: 70px;
+}
+
+/* 🔹 RESPONSIVIDADE - REDUÇÃO NO MOBILE */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-column {
+        width: 90%;
+    }
+
+    .footer-column h3 {
+        font-size: 14px;
+    }
+
+    .footer-column p {
+        font-size: 12px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .social-icons a {
+        width: 24px;
+        height: 24px;
+    }
+
+    .social-icons img {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Estilizando a seção "Entre em Contato" */
+    .footer-column.contact {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .footer-column.contact:hover {
+        transform: scale(1.05);
+    }
+
+    /* Estilizando o texto "2025" */
+    .footer-bottom p.year {
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    /* Mostrando apenas o essencial na versão mobile */
+    .footer-column:not(.contact) {
+        display: none;
+    }
+}

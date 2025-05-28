@@ -1,0 +1,10 @@
+
+header{
+    margin-bottom: 10px !important;
+}
+
+
+/* Ajuste do espaçamento entre o header e o carrossel */
+header {
+    margin-bottom: -10px; /* Reduzindo a margem inferior do header */
+}

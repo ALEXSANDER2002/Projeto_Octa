@@ -8,24 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/js/(.*)",
-      "dest": "/src/public/js/$1",
-      "headers": {
-        "Content-Type": "application/javascript"
-      }
-    },
-    {
-      "src": "/CSS/(.*)",
-      "dest": "/src/public/CSS/$1",
-      "headers": {
-        "Content-Type": "text/css"
-      }
-    },
-    {
-      "src": "/img/(.*)",
-      "dest": "/src/public/img/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/server.js"
     }
