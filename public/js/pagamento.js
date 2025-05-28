@@ -235,10 +235,9 @@ function mostrarPixGerado(dadosPix) {
     pixValor.textContent = `R$ ${(dadosPix.amount / 100).toFixed(2)}`;
     pixStatus.textContent = 'Aguardando pagamento';
     
-    // Mostrar botão de simular apenas em desenvolvimento
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        btnSimular.style.display = 'inline-block';
-    }
+    // Mostrar botão de simular temporariamente em todos os ambientes
+    btnSimular.style.display = 'inline-block';
+    console.log('🧪 Botão de simular habilitado para teste');
 }
 
 // Função para copiar código PIX
@@ -329,8 +328,10 @@ async function simularPagamento() {
 
 // Função para iniciar verificação automática
 function iniciarVerificacaoAutomatica() {
+    // TEMPORARIAMENTE DESABILITADO DEVIDO AO ERRO 403
+    console.log('⚠️ Verificação automática desabilitada temporariamente');
     // Verificar a cada 5 segundos
-    intervalVerificacao = setInterval(verificarStatusPagamento, 5000);
+    // intervalVerificacao = setInterval(verificarStatusPagamento, 5000);
 }
 
 // Função para parar verificação automática
