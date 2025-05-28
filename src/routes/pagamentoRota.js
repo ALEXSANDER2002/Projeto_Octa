@@ -139,18 +139,26 @@ router.post('/pagamento/criar-pix', async (req, res) => {
 // Rota para verificar status do pagamento
 router.get('/pagamento/status/:pixId', async (req, res) => {
     try {
+        console.log('🔍 === VERIFICAÇÃO DE STATUS ===');
+        console.log('📥 Params:', req.params);
+        console.log('📥 Headers:', JSON.stringify(req.headers, null, 2));
+        console.log('🌍 Environment:', process.env.NODE_ENV);
+        
         const { pixId } = req.params;
 
         if (!pixId) {
+            console.log('❌ PIX ID não fornecido');
             return res.status(400).json({
                 success: false,
                 error: 'ID do PIX é obrigatório'
             });
         }
 
+        console.log('🔍 Verificando status do PIX:', pixId);
         const result = await abacatePayService.checkPixStatus(pixId);
 
         if (!result.success) {
+            console.log('❌ Erro ao verificar status:', result.error);
             return res.status(400).json({
                 success: false,
                 error: 'Erro ao verificar status do pagamento',
@@ -158,16 +166,18 @@ router.get('/pagamento/status/:pixId', async (req, res) => {
             });
         }
 
+        console.log('✅ Status verificado com sucesso:', result.data);
         res.json({
             success: true,
             data: result.data
         });
 
     } catch (error) {
-        console.error('Erro ao verificar status:', error);
+        console.error('❌ Erro interno na verificação de status:', error);
         res.status(500).json({
             success: false,
-            error: 'Erro interno do servidor'
+            error: 'Erro interno do servidor',
+            details: error.message
         });
     }
 });
@@ -387,6 +397,15 @@ router.get('/pagamento/test-env', (req, res) => {
         message: 'Teste de Variáveis de Ambiente',
         environment: envVars,
         timestamp: new Date().toISOString()
+    });
+});
+
+// Rota de teste simples para verificar se as rotas estão funcionando
+router.get('/pagamento/test-route', (req, res) => {
+    res.json({
+        message: 'Rota de pagamento funcionando!',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV
     });
 });
 
