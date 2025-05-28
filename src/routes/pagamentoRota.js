@@ -367,4 +367,24 @@ router.post('/webhook/abacatepay', async (req, res) => {
     }
 });
 
+// Rota de teste para verificar variáveis de ambiente (REMOVER EM PRODUÇÃO)
+router.get('/pagamento/test-env', (req, res) => {
+    const envVars = {
+        NODE_ENV: process.env.NODE_ENV,
+        ABACATEPAY_API_KEY_EXISTS: !!process.env.ABACATEPAY_API_KEY,
+        ABACATEPAY_API_KEY_PREFIX: process.env.ABACATEPAY_API_KEY?.substring(0, 10),
+        ABACATEPAY_BASE_URL: process.env.ABACATEPAY_BASE_URL,
+        EMAIL_USER_EXISTS: !!process.env.EMAIL_USER,
+        EMAIL_HOST: process.env.EMAIL_HOST,
+        EMAIL_PORT: process.env.EMAIL_PORT,
+        VERCEL_URL: process.env.VERCEL_URL
+    };
+    
+    res.json({
+        message: 'Teste de Variáveis de Ambiente',
+        environment: envVars,
+        timestamp: new Date().toISOString()
+    });
+});
+
 module.exports = router; 
