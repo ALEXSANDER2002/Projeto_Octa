@@ -10,7 +10,13 @@ const emailService = new EmailService();
 // Rota para criar um pagamento PIX
 router.post('/pagamento/criar-pix', async (req, res) => {
     try {
-        console.log('📥 Dados recebidos:', JSON.stringify(req.body, null, 2));
+        console.log('🚀 === INÍCIO CRIAÇÃO PIX ===');
+        console.log('📥 Headers:', JSON.stringify(req.headers, null, 2));
+        console.log('📥 Body completo:', JSON.stringify(req.body, null, 2));
+        console.log('📥 Content-Type:', req.get('Content-Type'));
+        console.log('🌍 Environment:', process.env.NODE_ENV);
+        console.log('🔑 API Key presente:', !!process.env.ABACATE_PAY_API_KEY);
+        console.log('🔑 API Key (primeiros 10 chars):', process.env.ABACATE_PAY_API_KEY?.substring(0, 10));
         
         const { produto, cliente } = req.body;
 

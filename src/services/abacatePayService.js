@@ -23,10 +23,15 @@ class AbacatePayService {
      */
     async createPixQRCode(paymentData) {
         try {
+            console.log('🚀 === ABACATE PAY SERVICE ===');
+            console.log('🔑 API Key configurada:', !!this.apiKey);
+            console.log('🔑 API Key (primeiros 10 chars):', this.apiKey?.substring(0, 10));
+            console.log('🌐 Base URL:', this.baseURL);
+            console.log('📥 Payment Data recebido:', JSON.stringify(paymentData, null, 2));
+            
             const payload = {
-                amount: paymentData.amount, // Valor em centavos
-                description: paymentData.description || 'Compra na loja',
-                expiresIn: paymentData.expiresIn || 3600, // 1 hora por padrão
+                amount: paymentData.amount,
+                description: paymentData.description,
                 customer: {
                     name: paymentData.customer.name,
                     email: paymentData.customer.email,
@@ -35,7 +40,11 @@ class AbacatePayService {
                 }
             };
 
-            console.log('🔄 Enviando para Abacate Pay:', JSON.stringify(payload, null, 2));
+            console.log('🔄 Payload para Abacate Pay:', JSON.stringify(payload, null, 2));
+            console.log('🔄 Headers da requisição:', {
+                'Authorization': `Bearer ${this.apiKey?.substring(0, 10)}...`,
+                'Content-Type': 'application/json'
+            });
 
             // Configurar axios para aceitar status 400 como válido
             const response = await this.client.post('/pixQrCode/create', payload, {
