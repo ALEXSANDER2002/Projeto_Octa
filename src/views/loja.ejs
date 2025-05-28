@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/CSS/whatsapp.css">
     <link rel="stylesheet" href="/CSS/titulo.css">
     <link rel="stylesheet" href="/CSS/default.css">
+    <link rel="stylesheet" href="/CSS/modal-pagamento.css">
 </head>
 <body>
 <!-- Importando o header -->
@@ -27,7 +28,93 @@
 
 </div>
 
+<!-- Modal de Pagamento -->
+<div id="modalPagamento" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        
+        <!-- Etapa 1: Dados do Cliente -->
+        <div id="etapa-dados" class="etapa">
+            <h2>Dados para Pagamento</h2>
+            <div class="produto-info">
+                <img id="produto-imagem" src="" alt="">
+                <div>
+                    <h3 id="produto-nome"></h3>
+                    <p id="produto-preco"></p>
+                </div>
+            </div>
+            
+            <form id="formDadosCliente">
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Gerar PIX</button>
+            </form>
+        </div>
+        
+        <!-- Etapa 2: QR Code PIX -->
+        <div id="etapa-pix" class="etapa" style="display: none;">
+            <h2>Pagamento PIX</h2>
+            <div class="pix-info">
+                <div class="qr-code-container">
+                    <img id="qr-code" src="" alt="QR Code PIX">
+                </div>
+                <div class="pix-details">
+                    <p><strong>Valor:</strong> <span id="pix-valor"></span></p>
+                    <p><strong>Status:</strong> <span id="pix-status">Aguardando pagamento</span></p>
+                    <p class="pix-instrucoes">
+                        Escaneie o QR Code com o app do seu banco ou copie o código PIX abaixo:
+                    </p>
+                    <div class="pix-code-container">
+                        <input type="text" id="pix-code" readonly>
+                        <button id="btn-copiar" class="btn btn-secondary">Copiar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading-status" style="display: none;">
+                <p>Verificando pagamento...</p>
+            </div>
+            
+            <div class="buttons">
+                <button id="btn-verificar" class="btn btn-primary">Verificar Pagamento</button>
+                <button id="btn-simular" class="btn btn-warning" style="display: none;">Simular Pagamento (Teste)</button>
+                <button id="btn-novo-pagamento" class="btn btn-secondary">Novo Pagamento</button>
+            </div>
+        </div>
+        
+        <!-- Etapa 3: Confirmação -->
+        <div id="etapa-confirmacao" class="etapa" style="display: none;">
+            <h2>Pagamento Confirmado!</h2>
+            <div class="success-message">
+                <p>✅ Seu pagamento foi processado com sucesso!</p>
+                <p>Você receberá um e-mail de confirmação em breve.</p>
+            </div>
+            <button id="btn-fechar" class="btn btn-primary">Fechar</button>
+        </div>
+    </div>
+</div>
+
 <%- include('partials/footer') %>
 <%- include('partials/botao-whatsapp') %>
+
+<script src="/JS/pagamento.js"></script>
 </body>
 </html>

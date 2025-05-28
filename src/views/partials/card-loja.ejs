@@ -5,5 +5,13 @@
     <h2><%= nome %></h2>
     <p class="price"><span class="old-price">DE: R$ <%= precoAntigo.toFixed(2) %></span></p>
     <p class="price"><span class="new-price">POR: R$ <%= precoNovo.toFixed(2) %></span></p>
-    <a href="https://wa.me/5594992760247?text=Olá, gostaria de comprar o <%= nome %>" class="btn">Comprar</a>
+    <button class="btn btn-comprar" 
+            data-produto-nome="<%= nome %>" 
+            data-produto-preco="<%= precoNovo %>" 
+            data-produto-imagem="<%= imagem %>">
+        Comprar com PIX
+    </button>
+    <a href="https://wa.me/5594992760247?text=Olá, gostaria de comprar o <%= nome %>" class="btn btn-whatsapp">
+        Comprar via WhatsApp
+    </a>
 </div>

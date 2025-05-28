@@ -5,6 +5,7 @@ const modalidadeRouter = require('./modalidadeRota');
 const trofeuRouter = require('./trofeuRota');
 const eventoRouter = require('./eventos');
 const lojaRouter = require('./lojaRota');
+const pagamentoRouter = require('./pagamentoRota');
 
 // Rota para a Home
 router.get('/', (req, res) => {
@@ -22,5 +23,8 @@ router.use('/', modalidadeRouter);
 
 // rota da loja
 router.use('/', lojaRouter);
+
+// rotas de pagamento
+router.use('/', pagamentoRouter);
 
 module.exports = router;
