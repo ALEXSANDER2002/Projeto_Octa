@@ -2,9 +2,9 @@ const axios = require('axios');
 
 class AbacatePayService {
     constructor() {
-        this.apiKey = process.env.ABACATEPAY_API_KEY || 'your_api_key_here';
-        this.baseURL = process.env.ABACATEPAY_BASE_URL || 'https://api.abacatepay.com/v1';
-        this.webhookSecret = process.env.ABACATEPAY_WEBHOOK_SECRET || 'your_webhook_secret_here';
+        this.apiKey = process.env.ABACATE_PAY_API_KEY || process.env.ABACATEPAY_API_KEY || 'your_api_key_here';
+        this.baseURL = process.env.ABACATE_PAY_BASE_URL || process.env.ABACATEPAY_BASE_URL || 'https://api.abacatepay.com/v1';
+        this.webhookSecret = process.env.ABACATE_PAY_WEBHOOK_SECRET || process.env.ABACATEPAY_WEBHOOK_SECRET || 'your_webhook_secret_here';
         
         this.client = axios.create({
             baseURL: this.baseURL,

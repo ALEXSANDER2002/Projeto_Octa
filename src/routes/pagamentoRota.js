@@ -371,6 +371,9 @@ router.post('/webhook/abacatepay', async (req, res) => {
 router.get('/pagamento/test-env', (req, res) => {
     const envVars = {
         NODE_ENV: process.env.NODE_ENV,
+        ABACATE_PAY_API_KEY_EXISTS: !!process.env.ABACATE_PAY_API_KEY,
+        ABACATE_PAY_API_KEY_PREFIX: process.env.ABACATE_PAY_API_KEY?.substring(0, 10),
+        ABACATE_PAY_BASE_URL: process.env.ABACATE_PAY_BASE_URL,
         ABACATEPAY_API_KEY_EXISTS: !!process.env.ABACATEPAY_API_KEY,
         ABACATEPAY_API_KEY_PREFIX: process.env.ABACATEPAY_API_KEY?.substring(0, 10),
         ABACATEPAY_BASE_URL: process.env.ABACATEPAY_BASE_URL,
