@@ -12,19 +12,19 @@ router.get('/', (req, res) => {
     res.render('home'); // ✅ O Express buscará "home.ejs" dentro de "src/views/"
 });
 
-
+// Rota para eventos
 router.use('/', eventoRouter);
 
 // Rota para a sala de troféus
 router.use('/', trofeuRouter);
 
-// rota da pagina de  modalidades
+// Rota para modalidades
 router.use('/', modalidadeRouter);
 
-// rota da loja
-router.use('/', lojaRouter);
+// Rota para a loja
+router.use(lojaRouter);
 
-// rotas de pagamento
+// Rotas de pagamento
 router.use('/', pagamentoRouter);
 
 module.exports = router;

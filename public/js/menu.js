@@ -193,10 +193,22 @@ document.addEventListener("DOMContentLoaded", function () {
             // Adicionar classe para animações
             document.body.style.overflow = 'hidden';
             
-            // Animar itens do menu com delay
+            // Reset e preparar itens do menu para animação
             const items = this.querySelectorAll('.offcanvas-body nav ul li');
             items.forEach((item, index) => {
-                item.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+                // Reset da animação
+                item.style.animation = 'none';
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-30px)';
+                
+                // Força o reflow
+                item.offsetHeight;
+                
+                // Aplica a animação com delay
+                setTimeout(() => {
+                    item.style.animation = `slideInLeft 0.5s ease forwards`;
+                    item.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+                }, 50);
             });
         });
 
@@ -205,10 +217,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         menuOffcanvas.addEventListener('hidden.bs.offcanvas', function() {
-            // Reset das animações
+            // Reset completo das animações
             const items = this.querySelectorAll('.offcanvas-body nav ul li');
             items.forEach(item => {
+                item.style.animation = '';
                 item.style.animationDelay = '';
+                item.style.opacity = '';
+                item.style.transform = '';
             });
         });
     }

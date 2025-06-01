@@ -1,118 +1,745 @@
+/* LOJA - RESPONSIVIDADE AVANÇADA */
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1200px;
+/* Container principal da loja */
+.container-responsive {
     width: 100%;
-    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
 }
 
+/* Grid responsivo para produtos */
+.grid-responsive {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+/* Card do produto */
 .card-loja {
-    background-color: rgba(17, 27, 72, 0);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(63, 63, 63, 0.999);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 280px;
-    min-width: 250px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(145deg, rgba(17, 27, 72, 0.9), rgba(30, 40, 90, 0.8));
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 350px;
 }
 
+/* Efeito hover do card */
 .card-loja:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 255, 204, 0.2),
+        0 0 0 1px rgba(0, 255, 204, 0.4);
+    border-color: rgba(0, 255, 204, 0.6);
 }
 
-.card-loja .image-placeholder {
-    width: 100%;
-    height: 200px;
-    background: #222;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.card-loja .image-placeholder img {
+/* Efeito de brilho no hover */
+.card-loja::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
 }
 
-.card-loja h2 {
-    font-size: 1.3rem;
-    margin: 10px 0;
-    color: #ffffff;
+.card-loja:hover::before {
+    left: 100%;
 }
 
-.price {
-    font-size: 1rem;
-    margin: 5px 0;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: red;
-}
-
-.new-price {
-    color: #00ff00;
-    font-weight: bold;
-}
-
-.card-loja .btn {
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
+/* Container da imagem */
+.image-placeholder {
     width: 100%;
-    text-align: center;
-    transition: background-color 0.3s, transform 0.3s;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    margin-bottom: var(--spacing-sm, 0.75rem);
 }
 
-.card-loja .btn:hover {
-    background-color: #a8a8a8;
+/* Imagem do produto */
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.card-loja:hover .image-placeholder img {
     transform: scale(1.05);
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-    .container {
-        justify-content: space-around;
-    }
+/* Título do produto */
+.card-loja h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin: var(--spacing-sm, 1rem) 0;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+    z-index: 2;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Preços */
+.price {
+    text-align: center;
+    margin: 0.5rem 0;
+    position: relative;
+    z-index: 2;
+}
 
+.old-price {
+    display: block;
+    font-size: 0.9rem;
+    color: #ff6b6b;
+    text-decoration: line-through;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.new-price {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00ffcc;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+/* Botões */
+.card-loja .btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Botão PIX */
+.btn-comprar {
+    background: linear-gradient(45deg, #00ffcc, #0099ff);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(45deg, #0099ff, #00ffcc);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+    background: linear-gradient(45deg, #25d366, #128c7e);
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(45deg, #128c7e, #25d366);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+/* Título da página */
+h1 {
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: var(--spacing-xl, 3rem);
+    text-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #00ffcc, #0099ff);
+    border-radius: 2px;
+}
+
+/* RESPONSIVIDADE ESPECÍFICA DA LOJA */
+
+/* Mobile Extra Small (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
     .card-loja {
-        width: 90%;
-        max-width: 350px;
+        padding: 1rem;
+    }
+    
+    .image-placeholder {
+        height: 200px;
+    }
+    
+    .card-loja h2 {
+        font-size: 1rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile Small (375px - 413px) */
+@media (min-width: 375px) and (max-width: 413px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .image-placeholder {
+        height: 220px;
+    }
+}
+
+/* Mobile Medium (414px - 479px) */
+@media (min-width: 414px) and (max-width: 479px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .card-loja {
+        padding: 1rem;
+    }
+    
+    .image-placeholder {
+        height: 180px;
+    }
+}
+
+/* Mobile Large (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .grid-responsive {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .image-placeholder {
+        height: 200px;
+    }
+}
+
+/* Tablet Small (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .image-placeholder {
+        height: 230px;
+    }
+}
+
+/* Tablet Medium (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .image-placeholder {
+        height: 250px;
+    }
+}
+
+/* Desktop Small (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .image-placeholder {
+        height: 280px;
+    }
+}
+
+/* Desktop Medium (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+    
+    .image-placeholder {
+        height: 300px;
+    }
+}
+
+/* Desktop Large (1920px+) */
+@media (min-width: 1920px) {
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+    
+    .image-placeholder {
+        height: 320px;
+    }
+    
+    .card-loja {
+        padding: 2rem;
+    }
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-loja {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Skeleton loading */
+.skeleton-card {
+    background: linear-gradient(145deg, rgba(17, 27, 72, 0.5), rgba(30, 40, 90, 0.4));
+    border-radius: 16px;
+    padding: var(--spacing-md, 1.5rem);
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 1rem;
+}
+
+.skeleton-title {
+    width: 80%;
+    height: 1.5rem;
+    margin: 1rem auto;
+}
+
+.skeleton-price {
+    width: 60%;
+    height: 1rem;
+    margin: 0.5rem auto;
+}
+
+.skeleton-button {
+    width: 100%;
+    height: 2.5rem;
+    margin: 0.5rem 0;
+}
+
+@keyframes pulse {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Orientação landscape em mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+    .image-placeholder {
+        height: 150px;
+    }
+    
+    .card-loja {
+        padding: 1rem;
+    }
+    
     h1 {
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
+}
 
+/* Modo escuro aprimorado */
+@media (prefers-color-scheme: dark) {
     .card-loja {
-        width: 95%;
-        max-width: 320px;
+        background: linear-gradient(145deg, rgba(10, 15, 40, 0.95), rgba(20, 25, 60, 0.9));
+        border-color: rgba(0, 255, 204, 0.3);
     }
+}
+
+/* Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+    .card-loja,
+    .card-loja *,
+    .skeleton {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .card-loja:hover {
+        transform: none;
+    }
+}
+
+/* MELHORIAS ESPECÍFICAS PARA MOBILE */
+
+/* Touch-friendly buttons e interações */
+@media (max-width: 768px) {
+    /* Container principal mobile */
+    .container-responsive {
+        padding: 1rem 0.75rem;
+        margin: 0;
+        max-width: 100%;
+    }
+    
+    /* Grid mobile otimizado */
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    /* Cards mobile melhorados */
+    .card-loja {
+        padding: 1.25rem;
+        border-radius: 12px;
+        margin: 0 0.25rem;
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Imagens mobile otimizadas */
+    .image-placeholder {
+        height: 220px;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+    }
+    
+    .image-placeholder img {
+        border-radius: 6px;
+    }
+    
+    /* Título mobile */
+    .card-loja h2 {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        margin: 0.75rem 0;
+        text-align: center;
+    }
+    
+    /* Preços mobile */
+    .price {
+        margin: 0.75rem 0;
+    }
+    
+    .old-price {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .new-price {
+        font-size: 1.3rem;
+        font-weight: 800;
+    }
+    
+    /* Botões mobile touch-friendly */
+    .card-loja .btn {
+        padding: 1rem 1.25rem;
+        margin: 0.75rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        min-height: 48px; /* Tamanho mínimo para touch */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+    }
+    
+    /* Efeitos hover mobile (touch) */
+    .card-loja .btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Título da página mobile */
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Hover effects mobile */
+    .card-loja:hover {
+        transform: translateY(-4px);
+        box-shadow: 
+            0 12px 40px rgba(0, 255, 204, 0.15),
+            0 0 0 1px rgba(0, 255, 204, 0.3);
+    }
+}
+
+/* Mobile Extra Small - Melhorias específicas */
+@media (max-width: 480px) {
+    .container-responsive {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .grid-responsive {
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .card-loja {
+        padding: 1rem;
+        margin: 0 0.125rem;
+    }
+    
+    .image-placeholder {
+        height: 200px;
+    }
+    
+    .card-loja h2 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    .new-price {
+        font-size: 1.2rem;
+    }
+    
+    .card-loja .btn {
+        padding: 0.875rem 1rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Mobile Landscape - Otimizações específicas */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container-responsive {
+        padding: 1rem;
+    }
+    
+    .grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .image-placeholder {
+        height: 160px;
+    }
+    
+    .card-loja h2 {
+        font-size: 0.9rem;
+    }
+    
+    .card-loja .btn {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Melhorias de performance mobile */
+@media (max-width: 768px) {
+    /* Reduzir animações em dispositivos móveis */
+    .card-loja::before {
+        display: none; /* Remove efeito shimmer para melhor performance */
+    }
+    
+    /* Otimizar transições */
+    .card-loja {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card-loja .btn {
+        transition: transform 0.1s ease, background 0.2s ease;
+    }
+    
+    /* Melhorar legibilidade */
+    .card-loja {
+        background: linear-gradient(145deg, rgba(17, 27, 72, 0.95), rgba(30, 40, 90, 0.9));
+        backdrop-filter: blur(8px);
+    }
+}
+
+/* Touch gestures e acessibilidade mobile */
+@media (max-width: 768px) {
+    /* Área de toque aumentada */
+    .card-loja .btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Feedback visual para touch */
+    .card-loja .btn::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .card-loja .btn:active::after {
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Melhor contraste para mobile */
+    .old-price {
+        color: #ff8a8a;
+        font-weight: 500;
+    }
+    
+    .new-price {
+        color: #00ffcc;
+        text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+    }
+    
+    /* Espaçamento otimizado para scroll */
+    .grid-responsive {
+        padding-bottom: 2rem;
+    }
+}
+
+/* Melhorias para dispositivos com notch */
+@media (max-width: 768px) {
+    .container-responsive {
+        padding-left: max(0.75rem, env(safe-area-inset-left));
+        padding-right: max(0.75rem, env(safe-area-inset-right));
+        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* Dark mode específico para mobile */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .card-loja {
+        background: linear-gradient(145deg, rgba(10, 15, 35, 0.98), rgba(20, 25, 50, 0.95));
+        border-color: rgba(0, 255, 204, 0.3);
+    }
+    
+    .card-loja h2 {
+        color: #f0f0f0;
+    }
+}
+
+/* Loading spinner */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 255, 204, 0.3);
+    border-top: 4px solid #00ffcc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Classes de animação */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
 }

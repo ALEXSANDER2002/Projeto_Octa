@@ -1,0 +1,423 @@
+/* SISTEMA DE RESPONSIVIDADE AVANÇADA */
+
+/* Variáveis CSS para breakpoints */
+:root {
+    /* Breakpoints */
+    --mobile-xs: 320px;
+    --mobile-sm: 375px;
+    --mobile-md: 414px;
+    --mobile-lg: 480px;
+    --tablet-sm: 768px;
+    --tablet-md: 1024px;
+    --desktop-sm: 1200px;
+    --desktop-md: 1440px;
+    --desktop-lg: 1920px;
+    
+    /* Spacing responsivo */
+    --spacing-xs: clamp(0.5rem, 2vw, 1rem);
+    --spacing-sm: clamp(1rem, 3vw, 1.5rem);
+    --spacing-md: clamp(1.5rem, 4vw, 2rem);
+    --spacing-lg: clamp(2rem, 5vw, 3rem);
+    --spacing-xl: clamp(3rem, 6vw, 4rem);
+    
+    /* Typography responsiva */
+    --font-xs: clamp(0.75rem, 2.5vw, 0.875rem);
+    --font-sm: clamp(0.875rem, 3vw, 1rem);
+    --font-md: clamp(1rem, 3.5vw, 1.125rem);
+    --font-lg: clamp(1.125rem, 4vw, 1.25rem);
+    --font-xl: clamp(1.25rem, 4.5vw, 1.5rem);
+    --font-2xl: clamp(1.5rem, 5vw, 2rem);
+    --font-3xl: clamp(2rem, 6vw, 3rem);
+    
+    /* Container widths */
+    --container-xs: 100%;
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-2xl: 1320px;
+}
+
+/* Container responsivo */
+.container-responsive {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 576px) {
+    .container-responsive { max-width: var(--container-sm); }
+}
+
+@media (min-width: 768px) {
+    .container-responsive { max-width: var(--container-md); }
+}
+
+@media (min-width: 992px) {
+    .container-responsive { max-width: var(--container-lg); }
+}
+
+@media (min-width: 1200px) {
+    .container-responsive { max-width: var(--container-xl); }
+}
+
+@media (min-width: 1400px) {
+    .container-responsive { max-width: var(--container-2xl); }
+}
+
+/* Grid System Responsivo */
+.grid-responsive {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Mobile Extra Small (320px - 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .container-responsive {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    /* Typography ajustada */
+    h1 { font-size: var(--font-2xl); }
+    h2 { font-size: var(--font-xl); }
+    h3 { font-size: var(--font-lg); }
+    p { font-size: var(--font-sm); }
+    
+    /* Botões menores */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: var(--font-sm);
+    }
+    
+    /* Cards mais compactos */
+    .card {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Mobile Small (375px - 413px) */
+@media (min-width: 375px) and (max-width: 413px) {
+    .grid-responsive {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Melhor aproveitamento do espaço */
+    .modal-content {
+        margin: 10px;
+        max-height: calc(100vh - 20px);
+    }
+    
+    /* Menu mobile otimizado */
+    .offcanvas.offcanvas-end {
+        width: 90% !important;
+        max-width: 320px;
+    }
+}
+
+/* Mobile Medium (414px - 479px) */
+@media (min-width: 414px) and (max-width: 479px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
+    /* Produtos em 2 colunas se couber */
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Mobile Large (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    /* Layout mais espaçoso */
+    .container-responsive {
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Cards com mais espaço */
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    /* Modal melhor posicionado */
+    .modal-content {
+        margin: 20px;
+        max-height: calc(100vh - 40px);
+    }
+}
+
+/* Tablet Small (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    /* Layout híbrido tablet */
+    .tablet-layout {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Tablet Medium (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    /* Layout desktop pequeno */
+    .desktop-layout {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Desktop Small (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    /* Layout desktop padrão */
+    .desktop-layout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop Medium (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+    
+    /* Mais espaço entre elementos */
+    .container-responsive {
+        padding: 0 var(--spacing-lg);
+    }
+}
+
+/* Desktop Large (1920px+) */
+@media (min-width: 1920px) {
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+    
+    /* Layout para telas grandes */
+    .desktop-layout {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    /* Máximo de largura para legibilidade */
+    .container-responsive {
+        max-width: 1600px;
+    }
+}
+
+/* Orientação específica */
+@media (orientation: landscape) and (max-height: 500px) {
+    /* Landscape mobile - reduzir altura do header */
+    header {
+        height: 150px;
+        background-size: 60%;
+    }
+    
+    .logo {
+        width: 150px;
+    }
+    
+    /* Modal em landscape */
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 768px) {
+    /* Portrait mobile - otimizar para altura */
+    .modal-content {
+        max-height: 85vh;
+    }
+    
+    /* Botões maiores para touch */
+    .btn {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+/* Densidade de pixels alta */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Imagens de alta resolução */
+    .logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Bordas mais finas */
+    .card, .btn, .modal-content {
+        border-width: 0.5px;
+    }
+}
+
+/* Preferências do usuário */
+@media (prefers-reduced-motion: reduce) {
+    /* Reduzir animações para usuários sensíveis */
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Ajustes para modo escuro (já implementado, mas pode ser refinado) */
+    :root {
+        --toast-bg: rgba(30, 30, 30, 0.95);
+        --skeleton-color: rgba(60, 60, 60, 0.8);
+    }
+}
+
+/* Container Queries (Experimental - Futuro) */
+@supports (container-type: inline-size) {
+    .product-card {
+        container-type: inline-size;
+    }
+    
+    @container (min-width: 300px) {
+        .product-card .title {
+            font-size: 1.2rem;
+        }
+        
+        .product-card .price {
+            font-size: 1.1rem;
+        }
+    }
+    
+    @container (min-width: 400px) {
+        .product-card {
+            padding: var(--spacing-lg);
+        }
+        
+        .product-card .btn {
+            padding: 0.75rem 2rem;
+        }
+    }
+}
+
+/* Utilitários responsivos */
+.hide-mobile {
+    display: none;
+}
+
+.hide-tablet {
+    display: block;
+}
+
+.hide-desktop {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .hide-mobile { display: block; }
+    .hide-tablet { display: none; }
+    .show-tablet { display: block; }
+}
+
+@media (min-width: 1024px) {
+    .hide-desktop { display: none; }
+    .show-desktop { display: block; }
+}
+
+/* Flexbox responsivo */
+.flex-responsive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.flex-responsive > * {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+@media (max-width: 767px) {
+    .flex-responsive {
+        flex-direction: column;
+    }
+    
+    .flex-responsive > * {
+        flex: none;
+    }
+}
+
+/* Aspect Ratio responsivo */
+.aspect-ratio {
+    position: relative;
+    width: 100%;
+}
+
+.aspect-ratio::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 por padrão */
+}
+
+.aspect-ratio > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aspect-ratio-square::before {
+    padding-top: 100%;
+}
+
+.aspect-ratio-4-3::before {
+    padding-top: 75%;
+}
+
+.aspect-ratio-3-2::before {
+    padding-top: 66.67%;
+}
+
+/* Scroll responsivo */
+.scroll-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 204, 0.5) transparent;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 204, 0.5);
+    border-radius: 3px;
+}
+
+@media (max-width: 767px) {
+    .scroll-container {
+        -webkit-overflow-scrolling: touch;
+    }
+} 

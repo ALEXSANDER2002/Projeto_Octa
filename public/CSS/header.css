@@ -96,12 +96,20 @@ header::before {
 }
 
 .menu-desktop ul li a i {
-  margin-right: 5px;
+  margin-right: 8px;
+  font-size: 16px;
+  color: #00ffcc;
+  transition: all 0.3s ease;
 }
 
 .menu-desktop ul li a:hover {
   color: #0066ff;
   transform: translateY(-3px);
+}
+
+.menu-desktop ul li a:hover i {
+  color: #0066ff;
+  transform: scale(1.1);
 }
 
 /* OFFCANVAS (Menu Mobile Melhorado) */
@@ -129,12 +137,25 @@ header::before {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, #00ffcc, #0066ff, #00ffcc);
-  animation: shimmer 2s infinite;
+}
+
+/* Animação shimmer será ativada apenas quando o menu abrir */
+.offcanvas.show .offcanvas-header::before {
+  animation: shimmer 1s ease-out;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 .offcanvas-title {
@@ -170,20 +191,12 @@ header::before {
 
 .offcanvas-body nav ul li {
   margin: 0 0 15px 0;
-  opacity: 0;
-  transform: translateX(-30px);
-  animation: slideInLeft 0.5s ease forwards;
+  /* Removidas animações automáticas - agora controladas pelo JavaScript */
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.offcanvas-body nav ul li:nth-child(1) { animation-delay: 0.1s; }
-.offcanvas-body nav ul li:nth-child(2) { animation-delay: 0.2s; }
-.offcanvas-body nav ul li:nth-child(3) { animation-delay: 0.3s; }
-.offcanvas-body nav ul li:nth-child(4) { animation-delay: 0.4s; }
-.offcanvas-body nav ul li:nth-child(5) { animation-delay: 0.5s; }
-.offcanvas-body nav ul li:nth-child(6) { animation-delay: 0.6s; }
-.offcanvas-body nav ul li:nth-child(7) { animation-delay: 0.7s; }
-.offcanvas-body nav ul li:nth-child(8) { animation-delay: 0.8s; }
-
+/* Keyframe necessária para as animações controladas pelo JavaScript */
 @keyframes slideInLeft {
   to {
     opacity: 1;
@@ -325,15 +338,32 @@ header::before {
 }
 
 /* RESPONSIVIDADE */
-@media (max-width: 768px) {
-  /* Esconde menu desktop no mobile */
+@media (min-width: 769px) {
+  /* DESKTOP - Mostra menu desktop e esconde mobile */
   .menu-desktop {
-    display: none;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* MOBILE - Esconde menu desktop no mobile */
+  .menu-desktop {
+    display: none !important;
+    visibility: hidden !important;
   }
 
   /* Mostra botão hamburguer no mobile */
   .menu-toggle {
-    display: block;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* Aproxima o carrossel do header no mobile */
@@ -413,4 +443,41 @@ header::before {
     font-size: 22px;
     padding: 8px;
   }
+}
+
+/* CORREÇÕES ESPECÍFICAS PARA CONFLITOS */
+
+/* Correção para carrossel não sumir */
+.carousel-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Garantir que o carrossel apareça */
+.carousel, .carousel-inner, .carousel-item {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.carousel-item.active {
+  display: block !important;
+}
+
+/* Reset de possíveis conflitos */
+.carousel * {
+  box-sizing: border-box;
+}
+
+/* Garantir que o Bootstrap funcione */
+.carousel-control-prev,
+.carousel-control-next {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.carousel-indicators {
+  display: flex !important;
+  justify-content: center !important;
 }

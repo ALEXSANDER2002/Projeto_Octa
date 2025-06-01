@@ -1,7 +1,7 @@
 {
   "name": "projeto-octa-loja",
   "version": "1.0.0",
-  "description": "Loja online com integração Abacate Pay e sistema de emails",
+  "description": "Loja online com integração Mercado Pago e sistema de emails",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,7 +12,7 @@
   "keywords": [
     "nodejs",
     "express",
-    "abacate-pay",
+    "mercadopago",
     "pix",
     "ecommerce",
     "email"
@@ -24,9 +24,15 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
+    "compression": "^1.8.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "mercadopago": "^2.0.8",
+    "node-cache": "^5.1.2",
     "nodemailer": "^7.0.3",
     "serve-favicon": "^2.5.0"
   }

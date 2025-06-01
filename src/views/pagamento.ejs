@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Mercado Pago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SDK MercadoPago.js -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <style>
+        .payment-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .order-summary {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .payment-methods {
+            margin-bottom: 20px;
+        }
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .payment-benefits {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .benefit-icon {
+            margin-right: 10px;
+            color: #009ee3;
+            font-size: 20px;
+        }
+        #checkout-pro-container {
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loadingOverlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="payment-container">
+            <h1 class="mb-4">Finalizar Pagamento</h1>
+            
+            <div class="order-summary">
+                <h3>Resumo do Pedido</h3>
+                <div id="orderItems">
+                    <!-- Items serão inseridos aqui via JavaScript -->
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <strong>Total:</strong>
+                    <span id="orderTotal">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="payment-benefits mb-4">
+                <h4 class="mb-3">Vantagens de pagar com Mercado Pago</h4>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🔒</span>
+                    <span>Pagamento 100% seguro</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💳</span>
+                    <span>Parcele em até 12x</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <span>Aprovação instantânea</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🛡️</span>
+                    <span>Proteção anti-fraude</span>
+                </div>
+            </div>
+
+            <div id="checkout-pro-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar o loading
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+
+        // Função para esconder o loading
+        function hideLoading() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        // Função para formatar preço
+        function formatPrice(price) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(price);
+        }
+
+        // Função para atualizar o resumo do pedido
+        function updateOrderSummary(items) {
+            const orderItems = document.getElementById('orderItems');
+            const orderTotal = document.getElementById('orderTotal');
+            let total = 0;
+
+            orderItems.innerHTML = items.map(item => {
+                total += item.unit_price * item.quantity;
+                return `
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>${item.title} x ${item.quantity}</span>
+                        <span>${formatPrice(item.unit_price * item.quantity)}</span>
+                    </div>
+                `;
+            }).join('');
+
+            orderTotal.textContent = formatPrice(total);
+        }
+
+        // Inicializar o Mercado Pago
+        const mp = new MercadoPago('<%= process.env.MERCADO_PAGO_PUBLIC_KEY %>', {
+            locale: 'pt-BR'
+        });
+
+        // Criar preferência de pagamento
+        async function initCheckout() {
+            showLoading();
+            try {
+                // Dados do pedido (você deve adaptar isso para seus dados reais)
+                const orderData = {
+                    items: [{
+                        title: 'Produto de Exemplo',
+                        quantity: 1,
+                        currency_id: 'BRL',
+                        unit_price: 100.00
+                    }],
+                    payer: {
+                        email: 'comprador@email.com',
+                        first_name: 'João',
+                        last_name: 'Silva',
+                        identification: {
+                            type: 'CPF',
+                            number: '12345678909'
+                        }
+                    }
+                };
+
+                // Atualizar o resumo do pedido
+                updateOrderSummary(orderData.items);
+
+                const response = await fetch('/mercadopago/preference', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao criar preferência de pagamento');
+                }
+
+                const preference = await response.json();
+                
+                // Renderizar checkout
+                const checkoutContainer = document.getElementById('checkout-pro-container');
+                checkoutContainer.innerHTML = '';
+
+                const checkout = mp.checkout({
+                    preference: {
+                        id: preference.id
+                    },
+                    theme: {
+                        elementsColor: '#009ee3',
+                        headerColor: '#009ee3'
+                    },
+                    autoOpen: true,
+                    render: {
+                        container: '#checkout-pro-container',
+                        label: 'Pagar agora',
+                    },
+                    callbacks: {
+                        onError: (error) => {
+                            console.error('Erro no checkout:', error);
+                            hideLoading();
+                            alert('Ocorreu um erro ao processar o pagamento. Por favor, tente novamente.');
+                        },
+                        onReady: () => {
+                            hideLoading();
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao inicializar checkout:', error);
+                hideLoading();
+                alert('Erro ao processar pagamento. Tente novamente.');
+            }
+        }
+
+        // Inicializar checkout quando a página carregar
+        window.addEventListener('load', initCheckout);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

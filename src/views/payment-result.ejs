@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Pagamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .payment-result {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .success { 
+            background-color: #d4edda; 
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .failure { 
+            background-color: #f8d7da; 
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .pending { 
+            background-color: #fff3cd; 
+            border-color: #ffeeba;
+            color: #856404;
+        }
+        .payment-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .payment-details {
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .payment-details dl {
+            margin-bottom: 0;
+        }
+        .payment-details dt {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .payment-details dd {
+            margin-bottom: 15px;
+        }
+        .action-buttons {
+            margin-top: 30px;
+        }
+        .action-buttons .btn {
+            margin: 0 5px;
+            min-width: 150px;
+        }
+        .payment-instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .payment-instructions h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .payment-instructions ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+        .payment-instructions li {
+            margin-bottom: 10px;
+        }
+        .copy-button {
+            padding: 5px 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-button:hover {
+            background: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="payment-result <%= status %>">
+            <div class="payment-icon">
+                <% if (status === 'success') { %>
+                    ✅
+                <% } else if (status === 'failure') { %>
+                    ❌
+                <% } else { %>
+                    ⏳
+                <% } %>
+            </div>
+            
+            <h2 class="mb-4"><%= message %></h2>
+            
+            <div class="payment-details">
+                <dl>
+                    <% if (paymentId) { %>
+                        <dt>ID do Pagamento</dt>
+                        <dd>
+                            <%= paymentId %>
+                            <button class="copy-button" onclick="copyToClipboard('<%= paymentId %>')">
+                                Copiar
+                            </button>
+                        </dd>
+                    <% } %>
+                    
+                    <% if (externalReference) { %>
+                        <dt>Referência</dt>
+                        <dd><%= externalReference %></dd>
+                    <% } %>
+
+                    <% if (paymentMethod) { %>
+                        <dt>Forma de Pagamento</dt>
+                        <dd><%= paymentMethod %></dd>
+                    <% } %>
+
+                    <% if (installments) { %>
+                        <dt>Parcelas</dt>
+                        <dd><%= installments %>x de <%= installmentAmount %></dd>
+                    <% } %>
+
+                    <% if (totalAmount) { %>
+                        <dt>Valor Total</dt>
+                        <dd><%= totalAmount %></dd>
+                    <% } %>
+                </dl>
+            </div>
+
+            <% if (status === 'pending' && paymentInstructions) { %>
+                <div class="payment-instructions">
+                    <h4>Instruções de Pagamento</h4>
+                    <% if (paymentMethod === 'pix') { %>
+                        <p>Escaneie o QR Code abaixo ou copie o código Pix:</p>
+                        <div class="text-center mb-3">
+                            <img src="<%= paymentInstructions.qrCode %>" alt="QR Code Pix" style="max-width: 200px;">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between p-2 bg-light rounded">
+                            <code class="me-2"><%= paymentInstructions.pixCode %></code>
+                            <button class="copy-button" onclick="copyToClipboard('<%= paymentInstructions.pixCode %>')">
+                                Copiar Código
+                            </button>
+                        </div>
+                    <% } else if (paymentMethod === 'boleto') { %>
+                        <p>Você pode pagar o boleto de duas formas:</p>
+                        <ol>
+                            <li>
+                                <strong>Online:</strong> 
+                                <a href="<%= paymentInstructions.url %>" target="_blank" class="btn btn-sm btn-primary">
+                                    Pagar Online
+                                </a>
+                            </li>
+                            <li>
+                                <strong>Código de barras:</strong>
+                                <div class="d-flex align-items-center justify-content-between p-2 bg-light rounded mt-2">
+                                    <code class="me-2"><%= paymentInstructions.barCode %></code>
+                                    <button class="copy-button" onclick="copyToClipboard('<%= paymentInstructions.barCode %>')">
+                                        Copiar Código
+                                    </button>
+                                </div>
+                            </li>
+                        </ol>
+                        <p class="mt-3">
+                            <strong>Vencimento:</strong> <%= paymentInstructions.expirationDate %>
+                        </p>
+                    <% } %>
+                </div>
+            <% } %>
+
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">Voltar para a Loja</a>
+                
+                <% if (status === 'failure') { %>
+                    <a href="/checkout" class="btn btn-danger">Tentar Novamente</a>
+                <% } %>
+                
+                <% if (status === 'success') { %>
+                    <a href="/meus-pedidos" class="btn btn-success">Ver Meus Pedidos</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Copiado!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
+                alert('Não foi possível copiar o texto');
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

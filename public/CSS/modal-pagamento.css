@@ -308,4 +308,334 @@
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* MELHORIAS AVANÇADAS PARA MOBILE */
+
+/* Modal mobile otimizado */
+@media (max-width: 768px) {
+    .modal {
+        padding: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .modal-content {
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        padding: 1.5rem 1rem;
+        overflow-y: auto;
+        position: relative;
+        animation: modalSlideUp 0.3s ease-out;
+    }
+    
+    @keyframes modalSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Header do modal mobile */
+    .close {
+        position: sticky;
+        top: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-left: auto;
+        margin-bottom: 1rem;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* Título mobile */
+    .etapa h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-top: 0;
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        margin-top: -1rem;
+        z-index: 5;
+    }
+    
+    /* Produto info mobile */
+    .produto-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    }
+    
+    .produto-info img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .produto-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .produto-info p {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #28a745;
+    }
+    
+    /* Formulário mobile */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: #495057;
+    }
+    
+    .form-group input {
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: 2px solid #dee2e6;
+        min-height: 48px; /* Touch-friendly */
+        transition: all 0.2s ease;
+    }
+    
+    .form-group input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+        transform: translateY(-1px);
+    }
+    
+    /* Botões mobile touch-friendly */
+    .btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        min-height: 48px;
+        margin: 0.5rem 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Feedback visual para touch */
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .btn:active::before {
+        width: 200%;
+        height: 200%;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    /* PIX Info mobile */
+    .pix-info {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .qr-code-container {
+        align-self: center;
+        background: white;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .qr-code-container img {
+        width: 180px;
+        height: 180px;
+        border-radius: 8px;
+    }
+    
+    .pix-details {
+        text-align: left;
+    }
+    
+    .pix-details p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    
+    .pix-instrucoes {
+        background: #e3f2fd;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #2196f3;
+        margin: 1rem 0;
+    }
+    
+    /* PIX Code container mobile */
+    .pix-code-container {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+    
+    .pix-code-container input {
+        padding: 1rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        text-align: center;
+        background: #f8f9fa;
+        border: 2px solid #dee2e6;
+        min-height: 48px;
+    }
+    
+    /* Buttons container mobile */
+    .buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 2rem;
+        padding-bottom: 2rem; /* Espaço para scroll */
+    }
+    
+    /* Loading mobile */
+    .loading {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #f8f9fa;
+        border-radius: 12px;
+        margin: 1rem 0;
+    }
+    
+    .loading p {
+        font-size: 1.1rem;
+        color: #6c757d;
+        margin: 0;
+    }
+    
+    /* Success message mobile */
+    .success-message {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(145deg, #d4edda, #c3e6cb);
+        border-radius: 12px;
+        margin: 1rem 0;
+    }
+    
+    .success-message p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+    
+    .success-message p:first-child {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #155724;
+    }
+}
+
+/* Mobile Extra Small */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1rem 0.75rem;
+    }
+    
+    .etapa h2 {
+        font-size: 1.3rem;
+        padding: 0.75rem 0;
+    }
+    
+    .produto-info {
+        padding: 1rem;
+    }
+    
+    .produto-info img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .form-group input {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+        min-height: 44px;
+    }
+    
+    .qr-code-container img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* Melhorias para dispositivos com notch */
+@media (max-width: 768px) {
+    .modal-content {
+        padding-top: max(1.5rem, env(safe-area-inset-top));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+/* Otimizações de performance mobile */
+@media (max-width: 768px) {
+    .modal {
+        will-change: transform;
+    }
+    
+    .modal-content {
+        will-change: transform;
+        transform: translateZ(0); /* Force hardware acceleration */
+    }
+    
+    /* Reduzir animações complexas em mobile */
+    .btn {
+        transition: transform 0.1s ease, background-color 0.2s ease;
+    }
 } 
